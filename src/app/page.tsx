@@ -44,17 +44,25 @@ export default function Home() {
     });
   }, []);
 
-  // Initialize and play background music
+  // Initialize audio volume
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.15;
-      audioRef.current.play().catch((error) => {
-        console.log('Audio autoplay prevented:', error);
-      });
     }
   }, []);
 
+  // Function to play audio (for browser autoplay restrictions)
+  const playAudio = () => {
+    if (audioRef.current && audioRef.current.paused) {
+      audioRef.current.play().catch((error) => {
+        console.log('Audio play error:', error);
+      });
+    }
+  };
+
   const handleContinue = () => {
+    playAudio(); // Trigger audio on user interaction
+    
     if (!nickname.trim()) return;
     
     if (nickname.trim() !== "Aashu") {
@@ -71,6 +79,7 @@ export default function Home() {
   };
 
   const handleNext = () => {
+    playAudio(); // Ensure audio continues
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentPage(3);
@@ -79,6 +88,7 @@ export default function Home() {
   };
 
   const handleNextToFinal = () => {
+    playAudio(); // Ensure audio continues
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentPage(4);
@@ -132,6 +142,7 @@ export default function Home() {
                 className={fredokaFont.className}
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
+                onFocus={playAudio}
                 placeholder="Your Nickname here…"
               />
               <small className={fredokaFont.className} style={{ fontStyle: 'italic' }}>Hint: 5 letters, starts with A</small>
