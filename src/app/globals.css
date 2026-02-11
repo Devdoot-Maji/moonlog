@@ -26,6 +26,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
+  filter: drop-shadow(0 8px 24px rgba(90, 58, 58, 0.15));
 }
 
 .cloud-card {
@@ -96,6 +97,7 @@ input {
   margin-top: 24px;
   margin-bottom: 8px;
   color: #5A3A3A;
+  box-shadow: 0 4px 12px rgba(90, 58, 58, 0.1);
 }
 
 input::placeholder {
@@ -117,10 +119,14 @@ button {
   font-size: 16px;
   cursor: pointer;
   margin-top: 24px;
+  box-shadow: 0 4px 12px rgba(253, 121, 121, 0.3);
+  transition: all 0.2s ease;
 }
 
 button:hover {
   opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(253, 121, 121, 0.4);
 }
 
 .moon-container {
@@ -238,6 +244,7 @@ button:hover {
 .her-image {
   margin-top: 12px;
   border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(90, 58, 58, 0.2);
 }
 
 .wish-header {
