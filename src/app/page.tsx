@@ -22,6 +22,7 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Preload images for next pages
   useEffect(() => {
@@ -41,6 +42,16 @@ export default function Home() {
       link.href = src;
       document.head.appendChild(link);
     });
+  }, []);
+
+  // Initialize and play background music
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.15;
+      audioRef.current.play().catch((error) => {
+        console.log('Audio autoplay prevented:', error);
+      });
+    }
   }, []);
 
   const handleContinue = () => {
@@ -77,6 +88,12 @@ export default function Home() {
 
   return (
     <div className="page">
+      <audio 
+        ref={audioRef} 
+        src="/From The Start.mp3" 
+        loop 
+        preload="auto"
+      />
       {showErrorModal && (
         <div className="modal-overlay" onClick={() => setShowErrorModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
