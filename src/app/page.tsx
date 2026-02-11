@@ -123,6 +123,52 @@ export default function Home() {
 
           <div className="content-wrapper">
             <div className="card-content">
+              <h2 className="page3-title">You in little things…</h2>
+
+              <div className="moments-list">
+                <p className="moment-item">
+                  The way you love yapping<br />
+                  and sharing your day-to-day stories,
+                </p>
+
+                <p className="moment-item">
+                  The random hehehe's and khikhikhikhi's<br />
+                </p>
+
+                <p className="moment-item">
+                  The hopping around when you're excited,<br />
+                </p>
+
+                <p className="moment-item">
+                  And your never-ending love<br />
+                  for lip products.
+                </p>
+              </div>
+
+              <button onClick={handleNext}>Next →</button>
+            </div>
+          </div>
+
+          <div className="lily-wrapper">
+            <Image src="/aquarius.png" alt="" height={200} width={200} className="lily" />
+          </div>
+        </div>
+      )}
+
+      {currentPage === 3 && (
+        <div className={isTransitioning ? "page-content fade-out" : "page-content fade-in"}>
+          <div className="cloud-wrapper">
+            <Image
+              src="/wavy-shape.svg"
+              alt=""
+              fill
+              className="cloud-card"
+              priority
+            />
+          </div>
+
+          <div className="content-wrapper">
+            <div className="card-content">
               <div className="moon-container">
                 <Image 
                   src="/space.png" 
@@ -149,7 +195,7 @@ export default function Home() {
                 — 12th February, 97 —
               </p>
 
-              <button onClick={handleNext}>Next →</button>
+              <button onClick={handleNextToFinal}>Next →</button>
 
               <Image 
                 src="/aquarius-constellation.png" 
@@ -159,52 +205,6 @@ export default function Home() {
                 className="constellation-img"
               />
             </div>
-          </div>
-        </div>
-      )}
-
-      {currentPage === 3 && (
-        <div className={isTransitioning ? "page-content fade-out" : "page-content fade-in"}>
-          <div className="cloud-wrapper">
-            <Image
-              src="/wavy-shape.svg"
-              alt=""
-              fill
-              className="cloud-card"
-              priority
-            />
-          </div>
-
-          <div className="content-wrapper">
-            <div className="card-content">
-              <h2 className="page3-title">You in little things…</h2>
-
-              <div className="moments-list">
-                <p className="moment-item">
-                  The way you love yapping<br />
-                  and sharing your day-to-day stories,
-                </p>
-
-                <p className="moment-item">
-                  The random hehehe's and khikhikhikhi's<br />
-                </p>
-
-                <p className="moment-item">
-                  The hopping around when you're excited,<br />
-                </p>
-
-                <p className="moment-item">
-                  And your never-ending love<br />
-                  for lip products.
-                </p>
-              </div>
-
-              <button onClick={handleNextToFinal}>Next →</button>
-            </div>
-          </div>
-
-          <div className="lily-wrapper">
-            <Image src="/aquarius.png" alt="" height={200} width={200} className="lily" />
           </div>
         </div>
       )}
