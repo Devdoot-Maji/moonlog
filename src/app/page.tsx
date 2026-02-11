@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import localFont from "next/font/local";
 import { Fredoka } from "next/font/google";
 import BlossomScene from "./components/BlossomScene";
@@ -22,6 +22,26 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Preload images for next pages
+  useEffect(() => {
+    const imagesToPreload = [
+      '/aquarius.png',
+      '/space.png',
+      '/moon.png',
+      '/aquarius-constellation.png',
+      '/her-image.png',
+      '/cake.png'
+    ];
+    
+    imagesToPreload.forEach((src) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  }, []);
 
   const handleContinue = () => {
     if (!nickname.trim()) return;
@@ -104,7 +124,7 @@ export default function Home() {
           </div>
 
           <div className="lily-wrapper">
-            <Image src="/lily.png" alt="" height={200} width={200} className="lily" />
+            <Image src="/lily.png" alt="" height={200} width={200} className="lily" priority />
           </div>
         </div>
       )}
