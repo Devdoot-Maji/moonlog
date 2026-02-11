@@ -1,0 +1,18 @@
+<svg width="400" height="400" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <!-- Cloud-like wavy shape matching the image -->
+  <path d="M 0 25 
+    C 0 10, 20 0, 50 10 
+    C 70 0, 100 0, 130 10 
+    C 150 0, 170 5, 190 20 
+    C 220 5, 250 0, 280 15 
+    C 310 5, 340 10, 370 25 
+    C 390 15, 400 25, 400 40 
+    L 400 310 
+    C 400 330, 380 345, 350 335 
+    C 330 350, 300 350, 270 335 
+    C 250 350, 230 345, 210 330 
+    C 180 345, 150 350, 120 335 
+    C 90 345, 60 340, 30 325 
+    C 10 335, 0 325, 0 310 
+    Z" fill="white"/>
+</svg>
