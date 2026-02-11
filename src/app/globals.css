@@ -282,3 +282,57 @@ button:hover {
   height: 34px;
   background-position: -49px -35px;
 }
+
+/* Error Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(90, 58, 58, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #FFCDC9;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 300px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(90, 58, 58, 0.3);
+  animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  font-size: 32px;
+  color: #5A3A3A;
+  margin: 0 0 16px 0;
+}
+
+.modal-content p {
+  font-size: 18px;
+  color: #5A3A3A;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.modal-content button {
+  margin-top: 0;
+}

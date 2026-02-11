@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import localFont from "next/font/local";
 import { Fredoka } from "next/font/google";
 import BlossomScene from "./components/BlossomScene";
@@ -20,9 +20,17 @@ export default function Home() {
   const [nickname, setNickname] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleContinue = () => {
     if (!nickname.trim()) return;
+    
+    if (nickname.trim() !== "Aashu") {
+      setShowErrorModal(true);
+      return;
+    }
+    
     localStorage.setItem("nickname", nickname);
     setIsTransitioning(true);
     setTimeout(() => {
@@ -49,6 +57,23 @@ export default function Home() {
 
   return (
     <div className="page">
+      {showErrorModal && (
+        <div className="modal-overlay" onClick={() => setShowErrorModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2 className={fredokaFont.className}>Oops! 🙈</h2>
+            <p className={fredokaFont.className}>You are not the expected person</p>
+            <button 
+              className={fredokaFont.className} 
+              onClick={() => {
+                setShowErrorModal(false);
+                setTimeout(() => inputRef.current?.focus(), 100);
+              }}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
       {currentPage === 1 && (
         <div className={isTransitioning ? "page-content fade-out" : "page-content fade-in"}>
           <div className="cloud-wrapper">
@@ -66,6 +91,7 @@ export default function Home() {
               <h1 className={fredokaFont.className}>Hi There!🌸</h1>
 
               <input
+                ref={inputRef}
                 className={fredokaFont.className}
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
